@@ -43,6 +43,14 @@
             android:name=".MainActivityFAQs"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".Destination"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>

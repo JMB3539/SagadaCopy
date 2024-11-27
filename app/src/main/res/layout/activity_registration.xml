@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Group Registration -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you registering for a group?"
+            tools:ignore="HardcodedText" />
+
+        <RadioGroup
+            android:id="@+id/rgGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbGroupYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+
+            <RadioButton
+                android:id="@+id/rbGroupNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+        </RadioGroup>
+
+
+        <!-- Traveling with Agency -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Are you traveling with an agency?"
+            tools:ignore="HardcodedText" />
+
+        <RadioGroup
+            android:id="@+id/rgAgency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbAgencyYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                tools:ignore="HardcodedText" />
+
+            <RadioButton
+                android:id="@+id/rbAgencyNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"
+                tools:ignore="HardcodedText" />
+        </RadioGroup>
+
+        <!-- Agency Details (Visible only if "Yes" selected for agency) -->
+        <EditText
+            android:id="@+id/etPlateNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Plate Number"
+            android:visibility="gone"
+            tools:ignore="Autofill,HardcodedText,TextFields" />
+
+        <EditText
+            android:id="@+id/etDriverName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Driver's Name"
+            android:visibility="gone"
+            tools:ignore="Autofill,HardcodedText,TextFields" />
+
+
+        <!-- Tourist Information -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:inputType="number"
+            tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sex (M/F)"
+            tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etID"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ID Number"
+            tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etContactNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etNationality"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nationality"
+            tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        <EditText
+            android:id="@+id/etDurationOfStay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duration of Stay (days)"
+            android:inputType="number"
+            tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
+
+
+    </LinearLayout>
+</ScrollView>

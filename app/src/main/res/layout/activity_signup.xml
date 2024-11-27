@@ -49,7 +49,7 @@
             android:background="@drawable/rounded_edittext"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:layout_below="@id/username"
+            android:layout_below="@id/su_username"
             android:layout_margin="10dp"
             android:padding="10dp"
             android:inputType="text"

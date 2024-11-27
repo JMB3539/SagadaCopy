@@ -32,14 +32,14 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
 
         feature1Logo.setOnClickListener {
             Toast.makeText(context, "Itinerary Planner", Toast.LENGTH_SHORT).show()
-            // Navigate to Feature 1
+            // Navigate to Itinerary Planner
             val intent = Intent(activity, ItineraryPlanner::class.java)
             startActivity(intent)
         }
 
         feature2Logo.setOnClickListener {
-            Toast.makeText(context, "Feature 2 clicked", Toast.LENGTH_SHORT).show()
-            // Navigate to Feature 2
+            Toast.makeText(context, "Attractions", Toast.LENGTH_SHORT).show()
+            // Navigate to Attractions
         }
 
         feature3Logo.setOnClickListener {
@@ -48,18 +48,24 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
         }
 
         feature4Logo.setOnClickListener {
-            Toast.makeText(context, "Feature 4 clicked", Toast.LENGTH_SHORT).show()
-            // Navigate to Feature 4
+            Toast.makeText(context, "Reviews", Toast.LENGTH_SHORT).show()
+            // Navigate to Destination Review
+            val intent = Intent(activity, Destination::class.java)
+            startActivity(intent)
         }
 
         feature5Logo.setOnClickListener {
-            Toast.makeText(context, "Feature 5 clicked", Toast.LENGTH_SHORT).show()
-            // Navigate to Feature 5
+            Toast.makeText(context, "Registration", Toast.LENGTH_SHORT).show()
+            // Navigate to Registration
+            val intent = Intent(activity, RegistrationActivity::class.java)
+            startActivity(intent)
         }
 
         feature6Logo.setOnClickListener {
-            Toast.makeText(context, "Feature 6 clicked", Toast.LENGTH_SHORT).show()
-            // Navigate to Feature 6
+            Toast.makeText(context, "FAQs", Toast.LENGTH_SHORT).show()
+            // Navigate to FAQs
+            val intent = Intent(activity, MainActivityFAQs::class.java)
+            startActivity(intent)
         }
 
     }

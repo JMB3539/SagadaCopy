@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#A4D867"
+    tools:theme="@style/Theme.MyApplication3"> <!-- Ensure the theme is correct -->
+
+    <!-- App Title -->
+    <TextView
+        android:id="@+id/appTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SagadaGate"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#000"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
+
+    <!-- Destination Review Label -->
+    <TextView
+        android:id="@+id/destinationReviewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destination Review"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="8dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Review Input -->
+    <EditText
+        android:id="@+id/reviewInput"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:hint="Write your review here"
+        android:background="#E0E0E0"
+        android:padding="8dp"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        tools:ignore="Autofill,HardcodedText,VisualLintTextFieldSize" />
+
+    <!-- Rate Your Experience -->
+    <TextView
+        android:id="@+id/rateExperienceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate your experience:"
+        android:textSize="18sp"
+        android:textColor="#000"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="16dp"
+        tools:ignore="HardcodedText" />
+
+    <!-- Star Rating -->
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:layout_marginTop="8dp" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Submit"
+        android:textColor="#FFF"
+        tools:ignore="HardcodedText,TextContrastCheck,VisualLintButtonSize" />
+</LinearLayout>
