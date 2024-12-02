@@ -41,16 +41,13 @@
             android:exported="true" />
         <activity
             android:name=".MainActivityFAQs"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".Destination"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".RegistrationActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
     </application>
 
 </manifest>

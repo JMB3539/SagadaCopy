@@ -4,18 +4,37 @@
     <data>
         <variable
             name="itinerary"
-            type="com.example.myapplication3.models.Itinerary" />
+            type="com.example.myapplication3.models.Itinerary"
+            android:background="@drawable/nature_background_blur"/>
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/nature_background_blur"
         android:padding="16dp">
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:stretchColumns="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start|center_vertical"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/backButtonImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_back_arrow"
+                    android:contentDescription="Back Button"
+                    android:layout_marginEnd="8dp"
+                    android:padding="5dp" />
+            </LinearLayout>
 
             <!-- Title Row -->
             <TableRow>
@@ -48,6 +67,7 @@
                     android:layout_height="match_parent"
                     android:text="Day"
                     android:textStyle="bold"
+                    android:paddingStart="16dp"
                     tools:ignore="HardcodedText" />
                 <TextView
                     android:id="@+id/itemTime"

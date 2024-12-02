@@ -20,6 +20,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var etPlateNumber: EditText
     private lateinit var etDriverName: EditText
     private lateinit var btnSubmit: Button
+    private lateinit var backButtonImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +39,13 @@ class RegistrationActivity : AppCompatActivity() {
         etPlateNumber = findViewById(R.id.etPlateNumber)
         etDriverName = findViewById(R.id.etDriverName)
         btnSubmit = findViewById(R.id.btnSubmit)
+        backButtonImage = findViewById(R.id.backButtonImage)
+
+        // Back Button Action
+        backButtonImage.setOnClickListener {
+            // Navigate back to the previous screen
+            finish() // Ends the current activity
+        }
 
         // Show/Hide agency details based on selection
         rgAgency.setOnCheckedChangeListener { _, checkedId ->

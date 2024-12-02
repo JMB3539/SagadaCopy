@@ -34,7 +34,7 @@ class MainActivityFAQs : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.item_faq)
 
         faqLayout = findViewById(R.id.faqLayout)
 

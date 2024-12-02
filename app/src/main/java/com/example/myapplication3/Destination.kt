@@ -11,6 +11,7 @@ class Destination : AppCompatActivity() {
     private lateinit var reviewInput: EditText
     private lateinit var ratingBar: RatingBar
     private lateinit var submitButton: Button
+    private lateinit var backButtonImage: ImageView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +22,13 @@ class Destination : AppCompatActivity() {
         reviewInput = findViewById(R.id.reviewInput)
         ratingBar = findViewById(R.id.ratingBar)
         submitButton = findViewById(R.id.submitButton)
+        backButtonImage = findViewById(R.id.backButtonImage)
 
-
+        // Back Button Action
+        backButtonImage.setOnClickListener {
+            // Navigate back to the previous screen
+            finish() // Ends the current activity
+        }
 
         // Submit Button Action
         submitButton.setOnClickListener {

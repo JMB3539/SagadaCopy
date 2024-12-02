@@ -2,6 +2,7 @@ package com.example.myapplication3
 
 
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -14,6 +15,7 @@ class ItineraryPlanner : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItineraryAdapter
+    private lateinit var backButtonImage: ImageView
     private val itineraryItems = mutableListOf<Any>()
 
 
@@ -22,9 +24,16 @@ class ItineraryPlanner : AppCompatActivity() {
         setContentView(R.layout.itinerary_activity_main)
 
         recyclerView = findViewById(R.id.recyclerView)
+        backButtonImage = findViewById(R.id.backButtonImage)
         adapter = ConcreteItineraryAdapter(itineraryItems)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Back Button Action
+        backButtonImage.setOnClickListener {
+            // Navigate back to the previous screen
+            finish() // Ends the current activity
+        }
 
         // Add initial items
         itineraryItems.addAll(
