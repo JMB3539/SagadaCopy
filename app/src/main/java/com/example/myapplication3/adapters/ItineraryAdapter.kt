@@ -1,64 +1,45 @@
 package com.example.myapplication3.adapters
 
+
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication3.models.*
-import com.example.myapplication3.databinding.ItineraryItemLayoutBinding
+import com.example.myapplication3.R
+import com.example.myapplication3.models.Itinerary
 
-abstract class ItineraryAdapter(private val items: MutableList<Any>) : RecyclerView.Adapter<ItineraryAdapter.ViewHolder>() {
+class ItineraryAdapter(
+    private val activities: MutableList<Itinerary>,
+    private val onDeleteClick: (Itinerary) -> Unit
+) : RecyclerView.Adapter<ItineraryAdapter.ActivityViewHolder>() {
 
-    inner class ViewHolder(val binding: ItineraryItemLayoutBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Any) {
-            when (item) {
-                is TouristSpot -> {
-                    binding.itemName.text = item.name
-                    binding.itemDescription.text = item.description
-                }
+    inner class ActivityViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvDay: TextView = itemView.findViewById(R.id.tvDay)
+        val tvTime: TextView = itemView.findViewById(R.id.tvTime)
+        val tvDescription: TextView = itemView.findViewById(R.id.tvDescription)
+        val btnDelete: Button = itemView.findViewById(R.id.btnDelete)
+    }
 
-                is Restaurant -> {
-                    binding.itemName.text = item.name
-                    binding.itemDescription.text = item.cuisine
-                }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActivityViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.itinerary_item_layout, parent, false)
+        return ActivityViewHolder(view)
+    }
 
-                is Accommodation -> {
-                    binding.itemName.text = item.name
-                    binding.itemDescription.text = item.type
-                }
-            }
-        }
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
+    override fun onBindViewHolder(holder: ActivityViewHolder, position: Int) {
+        val activity = activities[position]
+        holder.tvDay.text = activity.day.toString()
+        holder.tvTime.text = activity.time
+        holder.tvDescription.text = activity.description
 
-        fun bind(item: ItineraryItem) {
-            binding.itemDay.text = item.day
-            binding.itemTime.text = item.time
-            binding.itemActivity.text = item.activity
-            binding.itemPlace.text = item.place
+        holder.btnDelete.setOnClickListener {
+            onDeleteClick(activity)
+            notifyDataSetChanged()  // Refresh the RecyclerView to reflect the deleted item
         }
     }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val binding = ItineraryItemLayoutBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-            return ViewHolder(binding)
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.bind(items[position])
-        }
-
-        override fun getItemCount(): Int = items.size
-
-        // Function to move items
-        fun onItemMoved(fromPosition: Int, toPosition: Int) {
-            val movedItem = items.removeAt(fromPosition)
-            items.add(toPosition, movedItem)
-            notifyItemMoved(fromPosition, toPosition)
-        }
-
-    }
-
-
+    override fun getItemCount(): Int = activities.size
+}

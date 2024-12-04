@@ -1,33 +1,42 @@
 package com.example.myapplication3
 
-
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication3.adapters.ItineraryAdapter
-import com.example.myapplication3.models.*
-import com.example.myapplication3.adapters.ConcreteItineraryAdapter
+import com.example.myapplication3.models.Itinerary
 
 class ItineraryPlanner : AppCompatActivity() {
 
+    private lateinit var etTitle: EditText
+    private lateinit var etDuration: EditText
+    private lateinit var etDay: EditText
+    private lateinit var etTime: EditText
+    private lateinit var etItineraryDescription: EditText
+    private lateinit var btnAddItinerary: Button
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ItineraryAdapter
+    private lateinit var itineraryAdapter: ItineraryAdapter
+    private val activities = mutableListOf<Itinerary>()
     private lateinit var backButtonImage: ImageView
-    private val itineraryItems = mutableListOf<Any>()
 
-
+    @SuppressLint("NotifyDataSetChanged", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.itinerary_activity_main)
 
+        etTitle = findViewById(R.id.etTitle)
+        etDuration = findViewById(R.id.etDuration)
+        etDay = findViewById(R.id.etDay)
+        etTime = findViewById(R.id.etTime)
+        etItineraryDescription = findViewById(R.id.etActivityDescription)
+        btnAddItinerary = findViewById(R.id.btnAddActivity)
         recyclerView = findViewById(R.id.recyclerView)
         backButtonImage = findViewById(R.id.backButtonImage)
-        adapter = ConcreteItineraryAdapter(itineraryItems)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Back Button Action
         backButtonImage.setOnClickListener {
@@ -35,47 +44,38 @@ class ItineraryPlanner : AppCompatActivity() {
             finish() // Ends the current activity
         }
 
-        // Add initial items
-        itineraryItems.addAll(
-            listOf(
-                TouristSpot("Bokong Falls", "A beautiful waterfall perfect for a dip."),
-                TouristSpot("Sumaguing Cave", "A popular cave for spelunking."),
-                TouristSpot("Echo Valley", "Famous for its stunning views and echoes."),
-                Restaurant("Log Cabin", "American"),
-                Restaurant("Taste of Sagada", "Local Cuisine"),
-                Restaurant("Bana's Café", "International"),
-                Accommodation("The Homestay", "Guesthouse"),
-                Accommodation("Sagbayan Mountain Resort", "Resort"),
-                Accommodation("Ganduyan Inn", "Inn")
-            )
-        )
-        adapter.notifyDataSetChanged()
+        // Set up the RecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        itineraryAdapter = ItineraryAdapter(activities) { activity ->
+            // Remove the selected activity
+            activities.remove(activity)
+            itineraryAdapter.notifyDataSetChanged()
+        }
+        recyclerView.adapter = itineraryAdapter
 
-        // Set up drag and drop
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.UP or ItemTouchHelper.DOWN) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                val fromPosition = viewHolder.adapterPosition
-                val toPosition = target.adapterPosition
-                itineraryItems.swap(fromPosition, toPosition)
-                adapter.notifyItemMoved(fromPosition, toPosition)
-                return true
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                // No swipe actions needed
-            }
-        })
-
-        itemTouchHelper.attachToRecyclerView(recyclerView)
+        // Add new activity on button click
+        btnAddItinerary.setOnClickListener {
+            addActivity()
+        }
     }
 
-    private fun MutableList<Any>.swap(fromPosition: Int, toPosition: Int) {
-        val temp = this[fromPosition]
-        this[fromPosition] = this[toPosition]
-        this[toPosition] = temp
+    @SuppressLint("NotifyDataSetChanged")
+    private fun addActivity() {
+        // Get input values and validate
+        val day = etDay.text.toString().toIntOrNull()
+        val time = etTime.text.toString()
+        val description = etItineraryDescription.text.toString()
+
+        if (day != null && time.isNotBlank() && description.isNotBlank()) {
+            // Create a new Activity instance and add it to the list
+            val activity = Itinerary(day, time, description)
+            activities.add(activity)
+            itineraryAdapter.notifyDataSetChanged()  // Refresh the RecyclerView
+
+            // Clear inputs for the next entry
+            etDay.text.clear()
+            etTime.text.clear()
+            etItineraryDescription.text.clear()
+        }
     }
 }

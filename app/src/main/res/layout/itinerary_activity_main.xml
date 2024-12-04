@@ -1,14 +1,11 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- activity_main.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/nature_background_blur">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,5 +23,63 @@
             android:layout_marginEnd="8dp"
             android:padding="5dp" />
     </LinearLayout>
+
+    <!-- Title and Duration Input -->
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title of your planner"
+        android:textColorHint="@color/white"
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/etDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Duration of stay (in days)"
+        android:textColorHint="@color/white"
+        android:inputType="number"
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+    <!-- Day, Time, and Activity Input -->
+    <EditText
+        android:id="@+id/etDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Day (e.g., 1, 2, 3)"
+        android:textColorHint="@color/white"
+        android:inputType="number"
+        tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Time (e.g., 10:00 AM)"
+        android:textColorHint="@color/white"
+        tools:ignore="Autofill,HardcodedText,TextContrastCheck,TextContrastCheck,TextFields,TouchTargetSizeCheck,VisualLintTextFieldSize" />
+
+    <EditText
+        android:id="@+id/etActivityDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Activity description"
+        android:textColorHint="@color/white"
+        tools:ignore="Autofill,HardcodedText,TextFields,TouchTargetSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+    <Button
+        android:id="@+id/btnAddActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Activity"
+        tools:ignore="HardcodedText" />
+
+    <!-- RecyclerView to Display Itinerary Items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp" />
 
 </LinearLayout>
