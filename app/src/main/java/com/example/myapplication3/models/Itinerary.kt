@@ -1,8 +1,7 @@
 package com.example.myapplication3.models
 
 data class Itinerary(
-    val day: String,
+    val day: Int,
     val time: String,
-    val activity: String,
-    val place: String
+    val description: String
 )
